@@ -1,0 +1,10 @@
+@use 'styles' as *;
+
+.header {
+	display: flex;
+	align-items: center;
+	background-color: color(site_primary);
+	height: 100px;
+	padding: 1.3rem;
+	font-size: 1.2rem;
+}
