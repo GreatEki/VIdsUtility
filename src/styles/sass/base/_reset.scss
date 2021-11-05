@@ -1,0 +1,27 @@
+@use '../../index' as *;
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	font-size: 14px;
+}
+
+body {
+	background-color: color(blue);
+	color: color(red);
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: color(white);
+}
