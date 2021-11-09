@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { BsCamera, BsCameraVideoFill, BsDownload } from 'react-icons/bs';
-
-import RecordRTC, { RecordRTCPromisesHandler } from 'recordrtc';
+import { FaVideoSlash } from 'react-icons/fa';
+import { RecordRTCPromisesHandler } from 'recordrtc';
+import { saveAs } from 'file-saver';
 
 import './camera.scss';
 
@@ -26,6 +27,23 @@ const Camera = () => {
 		setVideoBlob(null);
 	};
 
+	const stopRecord = async () => {
+		if (theRecorder) {
+			await theRecorder.stopRecording();
+			const blob = await theRecorder.getBlob();
+			theStream.stop();
+			setVideoBlob(blob);
+			setTheStream(null);
+			setTheRecorder(null);
+		}
+	};
+
+	const downloadVideo = () => {
+		if (videoBlob) {
+			saveAs(videoBlob, `Video-${Date.now()}.webm`);
+		}
+	};
+
 	const changeActionType = () => {
 		const theType = actionType === 'video' ? 'screen' : 'video';
 		setActionType(theType);
@@ -41,10 +59,10 @@ const Camera = () => {
 				<div className='icon' onClick={startRecord}>
 					<BsCamera />
 				</div>
-				<div className='icon'>
-					<BsCameraVideoFill />
+				<div className='icon' onClick={stopRecord}>
+					<FaVideoSlash />
 				</div>
-				<div className='icon'>
+				<div className='icon' onClick={downloadVideo}>
 					<BsDownload />
 				</div>
 			</div>
