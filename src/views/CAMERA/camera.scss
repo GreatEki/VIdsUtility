@@ -1,1 +1,32 @@
+@use 'styles' as *;
 
+.cameraContainer {
+	background: color(site_dark);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.icons_box {
+		display: flex;
+		justify-content: space-evenly;
+		// border: 2px solid white;
+		width: 30%;
+		font-size: 1.2rem;
+		margin: 2rem 0;
+	}
+
+	.icon {
+		background-color: color(site_primary);
+		padding: 1.25rem;
+		border-radius: 0.5em;
+		font-size: 1.5rem;
+	}
+
+	.cam_box {
+		min-height: 300px;
+		width: 75%;
+		background-color: white;
+		margin: 2rem 0.5rem;
+	}
+}
