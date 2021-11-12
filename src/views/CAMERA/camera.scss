@@ -18,9 +18,11 @@
 
 	.icon {
 		background-color: color(site_primary);
-		padding: 1.25rem;
+		padding: 1.1rem 1.3rem;
 		border-radius: 0.5em;
 		font-size: 1.5rem;
+		outline: none;
+		border: none;
 	}
 
 	.cam_box {
@@ -29,4 +31,14 @@
 		background-color: white;
 		margin: 2rem 0.5rem;
 	}
+}
+
+button.icon:hover {
+	background-color: lighten(color(site_primary), 25%);
+}
+
+button.icon:disabled {
+	cursor: not-allowed;
+	pointer-events: all !important;
+	background-color: darken(color(site_primary), 15%);
 }

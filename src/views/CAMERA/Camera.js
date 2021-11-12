@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { BsCamera, BsCameraVideoFill, BsDownload } from 'react-icons/bs';
+import { BsCamera, BsDownload } from 'react-icons/bs';
 import { FaVideoSlash } from 'react-icons/fa';
 import { RecordRTCPromisesHandler } from 'recordrtc';
 import { Player } from 'video-react';
@@ -86,19 +86,25 @@ const Camera = () => {
 	return (
 		<div className='cameraContainer'>
 			<div className='icons_box'>
-				<div className='icon' onClick={changeActionType}>
+				<button className='icon' onClick={changeActionType}>
 					Record {actionType}
-				</div>
+				</button>
 
-				<div className='icon' onClick={startRecord}>
+				<button className='icon' onClick={startRecord}>
 					<BsCamera />
-				</div>
-				<div className='icon' onClick={stopRecord}>
+				</button>
+				<button
+					className='icon'
+					disabled={theStream ? false : true}
+					onClick={stopRecord}>
 					<FaVideoSlash />
-				</div>
-				<div className='icon' onClick={downloadVideo}>
+				</button>
+				<button
+					className='icon'
+					disabled={!videoBlob ? true : false}
+					onClick={downloadVideo}>
 					<BsDownload />
-				</div>
+				</button>
 			</div>
 
 			{/* <div className='cam_box'> */}
@@ -106,7 +112,7 @@ const Camera = () => {
 				{' '}
 			</video>
 
-			{videoBlob && <Player src={window.URL.createObjectURL(videoBlob)} />}
+			{!!videoBlob && <Player src={window.URL.createObjectURL(videoBlob)} />}
 			{/* </div> */}
 		</div>
 	);
